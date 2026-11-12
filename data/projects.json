@@ -15,7 +15,7 @@
     "category": "WEB SERIVCE",
     "summary": "高性能チャットサイト",
     "body": "チャットだけではなく、ゲーム、ストア、ポイントなどさまざまな機能があります。",
-    "image": "assets/images/hero-1.jpg",
+    "image": "assets/images/hero-2.jpg",
     "url": "https://sorachatbysennin.onrender.com/home",
     "published": true
   },
@@ -24,8 +24,8 @@
     "title": "soralink",
     "category": "WEB SERVICE",
     "summary": "sns",
-    "body": "sns",
-    "image": "assets/images/hero-2.jpg",
+    "body": "snsです。結構こだわりました。",
+    "image": "assets/images/hero-1.jpg",
     "url": "https://soralinkuow.onrender.com/",
     "published": true
   }
