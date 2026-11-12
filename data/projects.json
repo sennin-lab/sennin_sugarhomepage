@@ -1,0 +1,32 @@
+[
+  {
+    "id": "project-01",
+    "title": "Project 01",
+    "category": "WEB SERVICE",
+    "summary": "プロジェクトの概要をここに入力してください。",
+    "body": "プロジェクトの詳細をここに入力してください。\\n\\n段落を分ける場合は、空行を入れてください。",
+    "image": "assets/images/project-01.jpg",
+    "url": "",
+    "published": true
+  },
+  {
+    "id": "project-02",
+    "title": "Project 02",
+    "category": "APPLICATION",
+    "summary": "プロジェクトの概要をここに入力してください。",
+    "body": "プロジェクトの詳細をここに入力してください。",
+    "image": "assets/images/project-02.jpg",
+    "url": "",
+    "published": true
+  },
+  {
+    "id": "project-03",
+    "title": "Project 03",
+    "category": "TOOL",
+    "summary": "プロジェクトの概要をここに入力してください。",
+    "body": "プロジェクトの詳細をここに入力してください。",
+    "image": "assets/images/project-03.jpg",
+    "url": "",
+    "published": true
+  }
+]

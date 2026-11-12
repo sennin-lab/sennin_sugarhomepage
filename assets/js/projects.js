@@ -1,0 +1,4 @@
+function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function loadProjects(){const grid=document.getElementById("projectGrid");if(!grid)return;try{const r=await fetch("data/projects.json");if(!r.ok)throw 0;const data=await r.json();const list=data.filter(p=>p.published!==false);if(!list.length){grid.innerHTML='<div class="empty-state">公開中のプロジェクトはありません。</div>';return}
+grid.innerHTML=list.map(p=>`<a class="content-card" href="project-detail.html?id=${encodeURIComponent(p.id)}"><img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"><div class="content-card-body"><small>${esc(p.category||"PROJECT")}</small><h2>${esc(p.title)}</h2><p>${esc(p.summary||"")}</p></div></a>`).join("")}catch(e){grid.innerHTML='<div class="empty-state">Projectsを読み込めませんでした。</div>'}}
+loadProjects();
