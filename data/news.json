@@ -1,5 +1,14 @@
 [
   {
+    "id": "soralink-close",
+    "date": "2026-11-13",
+    "title": "soralinkのサーバーの運営が縮小します。",
+    "summary": "soralinkの運営が縮小します。",
+    "body": "soralinkのユーザー減少により、これ以上運営する意味がないと思いました。\\n\\nそのため、11月25日までに、サーバーの常時起動を停止します。dm機能も停止する可能性もあります。",
+    "image": "",
+    "published": true
+  }  
+  {
     "id": "website-open",
     "date": "2026-11-12",
     "title": "sennin_sugar 公式ウェブサイトを公開しました。",
