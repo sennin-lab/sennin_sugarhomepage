@@ -1,4 +1,16 @@
-function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-async function loadProjectDetail(){const root=document.getElementById("projectDetail");const id=new URLSearchParams(location.search).get("id");try{const r=await fetch("data/projects.json");if(!r.ok)throw 0;const list=await r.json();const p=list.find(x=>x.id===id&&x.published!==false);if(!p){root.innerHTML='<div class="empty-state">指定されたプロジェクトが見つかりません。</div>';return}
-root.innerHTML=`<img class="detail-image" src="${esc(p.image)}" alt="${esc(p.title)}"><p class="detail-meta">${esc(p.category||"PROJECT")}</p><h1 class="detail-title">${esc(p.title)}</h1><div class="detail-body">${String(p.body||p.summary||"").split(/\\n\\n+/).map(t=>`<p>${esc(t)}</p>`).join("")}</div>${p.url?`<a class="text-link" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">プロジェクトを見る <span>↗</span></a>`:""}<br><a class="back-link" href="projects.html">← Projects一覧へ戻る</a>`}catch(e){root.innerHTML='<div class="empty-state">プロジェクトを読み込めませんでした。</div>'}}
-loadProjectDetail();
+(async()=>{
+ const root=document.getElementById("projectDetail");
+ const s=window.sugar;
+ const id=new URLSearchParams(location.search).get("id");
+ try{
+  const r=await fetch("data/projects.json");
+  if(!r.ok)throw new Error("projects.json");
+  const list=await r.json();
+  const p=list.find(x=>x.id===id&&x.published!==false);
+  if(!p){root.innerHTML='<div class="empty-state">指定されたプロジェクトが見つかりません。</div>';return}
+  document.title=`${p.title} | sennin_sugar`;
+  root.innerHTML=`${p.image?`<img class="detail-image" src="${s.esc(p.image)}" alt="${s.esc(p.title)}">`:""}<p class="detail-meta">${s.esc(p.category||"PROJECT")}</p><h1 class="detail-title">${s.esc(p.title)}</h1><div class="detail-body">${s.renderParagraphs(p.body||p.summary||"")}</div>${p.url?`<a class="text-link" href="${s.esc(p.url)}" target="_blank" rel="noopener noreferrer">プロジェクトを見る <span>↗</span></a>`:""}<br><a class="back-link" href="projects.html">← Projects一覧へ戻る</a>`;
+ }catch(e){
+  root.innerHTML='<div class="empty-state">プロジェクトを読み込めませんでした。</div>';
+ }
+})();

@@ -1,4 +1,16 @@
-function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-async function loadNewsDetail(){const root=document.getElementById("newsDetail");const id=new URLSearchParams(location.search).get("id");try{const r=await fetch("data/news.json");if(!r.ok)throw 0;const list=await r.json();const n=list.find(x=>x.id===id&&x.published!==false);if(!n){root.innerHTML='<div class="empty-state">指定されたお知らせが見つかりません。</div>';return}
-root.innerHTML=`${n.image?`<img class="detail-image" src="${esc(n.image)}" alt="">`:""}<p class="detail-meta">${esc(n.date.replaceAll("-","."))}</p><h1 class="detail-title">${esc(n.title)}</h1><div class="detail-body">${String(n.body||n.summary||"").split(/\\n\\n+/).map(t=>`<p>${esc(t)}</p>`).join("")}</div><a class="back-link" href="news.html">← News一覧へ戻る</a>`}catch(e){root.innerHTML='<div class="empty-state">Newsを読み込めませんでした。</div>'}}
-loadNewsDetail();
+(async()=>{
+ const root=document.getElementById("newsDetail");
+ const s=window.sugar;
+ const id=new URLSearchParams(location.search).get("id");
+ try{
+  const r=await fetch("data/news.json");
+  if(!r.ok)throw new Error("news.json");
+  const list=await r.json();
+  const n=list.find(x=>x.id===id&&x.published!==false);
+  if(!n){root.innerHTML='<div class="empty-state">指定されたお知らせが見つかりません。</div>';return}
+  document.title=`${n.title} | sennin_sugar`;
+  root.innerHTML=`${n.image?`<img class="detail-image" src="${s.esc(n.image)}" alt="">`:""}<p class="detail-meta">${s.esc(n.date.replaceAll("-","."))}</p><h1 class="detail-title">${s.esc(n.title)}</h1><div class="detail-body">${s.renderParagraphs(n.body||n.summary||"")}</div><a class="back-link" href="news.html">← お知らせ一覧へ</a>`;
+ }catch(e){
+  root.innerHTML='<div class="empty-state">Newsを読み込めませんでした。</div>';
+ }
+})();
