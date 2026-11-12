@@ -1,10 +1,10 @@
 [
   {
-    "id": "project-01",
-    "title": "Project 01",
+    "id": "senninaccount",
+    "title": "senninaccount",
     "category": "WEB SERVICE",
-    "summary": "プロジェクトの概要をここに入力してください。",
-    "body": "プロジェクトの詳細をここに入力してください。\\n\\n段落を分ける場合は、空行を入れてください。",
+    "summary": "Oauth2.0対応のアカウントサービス",
+    "body": "ポイントシステム搭載したアカウントサービスです。\\n仙人サービスを使えるようになります。",
     "image": "assets/images/project-01.jpg",
     "url": "",
     "published": true
